@@ -240,37 +240,53 @@ textarea::placeholder {
 }
 
 
-/* Modo claro - padrão */
-body {
-    background-color: #f0f0f0;
-    color: #333;
-}
-
-/* Botão de alternância para o modo noturno */
-.night-mode-toggle {
+.theme-toggle {
     position: fixed;
     top: 20px;
     right: 20px;
-    padding: 10px 15px;
-    cursor: pointer;
-    background-color: #444;
-    color: white;
+    z-index: 1000;
+}
+
+#toggle-theme-btn {
+    background-color: #f0f0f0;
     border: none;
-    border-radius: 5px;
+    padding: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 50%;
 }
 
-/* Modo noturno */
-body.night-mode {
-    background-color: #1c1c1c;
-    color: #e0e0e0;
-}
-
-.night-mode .night-mode-toggle {
-    background-color: #fff;
-    color: #000;
+#toggle-theme-btn:hover {
+    background-color: #e0e0e0;
 }
 
 /* Transição suave ao alternar entre modos */
 body {
     transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+.dark-mode input,
+.dark-mode textarea {
+    background-color: #333333;
+    color: #ffffff;
+    border: 1px solid #ffffff;
+}
+
+.dark-mode button {
+    background-color: #555555;
+    color: #ffffff;
+}
+
+.dark-mode #toggle-theme-btn {
+    background-color: #333333;
+    color: #ffffff;
+}
+
+.dark-mode #toggle-theme-btn:hover {
+    background-color: #444444;
 }

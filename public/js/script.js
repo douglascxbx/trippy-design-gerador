@@ -405,27 +405,13 @@ document.querySelector('.warranty-btn').addEventListener('click', () => {
 });
 
 
-// Função para alternar entre o modo noturno e o modo claro
-function toggleNightMode() {
-    const body = document.body;
-    body.classList.toggle('night-mode'); // Alterna entre os modos
-
-    // Salva a preferência no localStorage
-    if (body.classList.contains('night-mode')) {
-        localStorage.setItem('theme', 'night');
+document.getElementById('toggle-theme-btn').addEventListener('click', function() {
+    document.body.classList.toggle('dark-mode');
+    if (document.body.classList.contains('dark-mode')) {
+        this.textContent = '☀️'; // Muda o ícone para o sol
     } else {
-        localStorage.setItem('theme', 'light');
-    }
-}
-
-// Carrega a preferência do usuário ao carregar a página
-document.addEventListener('DOMContentLoaded', () => {
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'night') {
-        document.body.classList.add('night-mode'); // Aplica o modo noturno se for a preferência salva
+        this.textContent = '🌙'; // Muda o ícone para a lua
     }
 });
 
-// Adiciona um evento de clique ao botão de alternância
-document.querySelector('.night-mode-toggle').addEventListener('click', toggleNightMode);
 
