@@ -38,6 +38,7 @@ function adicionarItem() {
     const tipo = document.getElementById('item-type').value;
     const valorUnitario = parseFloat(document.getElementById('item-value').value);
 
+    // Verificação se o valor unitário é válido
     if (isNaN(valorUnitario) || valorUnitario <= 0) {
         alert('O valor do item deve ser um número positivo.');
         return;
@@ -45,26 +46,35 @@ function adicionarItem() {
 
     const valorTotal = valorUnitario * quantidade;
 
+    // Capitalizando o nome do item
     nome = capitalizeWords(nome);
+    
 
+    // Verificação para garantir que todos os campos estão preenchidos corretamente
     if (quantidade > 0 && nome && !isNaN(valorUnitario)) {
+        // Adiciona o item à lista de itens com o valor correto
         itens.push({ quantidade, nome, tipo, valor: valorTotal });
 
+        // Atualiza os totais de valores
         if (tipo === 'dinheiro') {
             totalReais += valorTotal;
         } else {
             totalMoedas += valorTotal;
         }
 
+        // Atualiza os campos totais
         document.getElementById('total-reais').textContent = totalReais.toFixed(2);
         document.getElementById('total-cambios').textContent = totalMoedas.toFixed(0);
 
+        // Exibe os itens adicionados na lista
         atualizarListaItens();
 
+        // Salva os itens e totais no localStorage
         localStorage.setItem('itensNotaFiscal', JSON.stringify(itens));
         localStorage.setItem('totalReais', totalReais);
         localStorage.setItem('totalMoedas', totalMoedas);
 
+        // Limpa os campos de entrada para nova entrada
         document.getElementById('item-quantity').value = '';
         document.getElementById('item-name').value = '';
         document.getElementById('item-value').value = '0';
@@ -73,9 +83,10 @@ function adicionarItem() {
     }
 }
 
+
 function atualizarListaItens() {
     const listaItens = document.getElementById('lista-itens');
-    listaItens.innerHTML = '';
+    listaItens.innerHTML = ''; // Limpa a lista antes de atualizá-la
 
     itens.forEach((item, index) => {
         const valorExibido = item.tipo === 'dinheiro' ? `R$${item.valor.toFixed(2)}` : `${item.valor.toFixed(0)}c`;
@@ -119,6 +130,7 @@ function removerItem(index) {
     itens.splice(index, 1);
     atualizarListaItens();
 
+    // Atualiza o localStorage com os itens e totais atualizados
     localStorage.setItem('itensNotaFiscal', JSON.stringify(itens));
     localStorage.setItem('totalReais', totalReais);
     localStorage.setItem('totalMoedas', totalMoedas);
@@ -271,6 +283,7 @@ async function gerarNotaFiscalPDF(cliente, arquiteto, itens, totalReais, totalMo
         link.click();
         document.body.removeChild(link);
 
+        // Após gerar o PDF, limpa o localStorage
         localStorage.removeItem('itensNotaFiscal');
         localStorage.removeItem('totalReais');
         localStorage.removeItem('totalMoedas');
@@ -279,12 +292,13 @@ async function gerarNotaFiscalPDF(cliente, arquiteto, itens, totalReais, totalMo
     }
 }
 
+// Capturar o evento de clique no botão "Finalizar Nota Fiscal"
 document.querySelector('.finalize-btn').addEventListener('click', () => {
     const cliente = document.getElementById('client-name').value;
     const arquiteto = document.getElementById('architect-name').value;
     const observacoes = document.getElementById('observations').value;
 
-    const itens = [];
+    const itens = []; // Inicializa um novo array de itens
 
     document.querySelectorAll('#lista-itens li').forEach((li) => {
         const quantidade = parseFloat(li.querySelector('strong').textContent.replace('x', '').trim());
@@ -293,58 +307,75 @@ document.querySelector('.finalize-btn').addEventListener('click', () => {
         let valor = li.querySelector('.item-info span').textContent.replace(/[^\d.,-]/g, '').replace(',', '.').trim();
         valor = parseFloat(valor);
 
+        // Garantir que o valor não seja NaN
         if (isNaN(valor) || valor <= 0) {
             valor = 0;
         }
 
         const tipo = li.querySelector('.item-info span').textContent.includes('R$') ? 'dinheiro' : 'moedas';
 
+        // Adicionar o item na lista com o valor correto
         itens.push({ quantidade, nome, tipo, valor });
     });
 
     const totalReais = parseFloat(document.getElementById('total-reais').textContent);
     const totalMoedas = parseFloat(document.getElementById('total-cambios').textContent);
 
+    // Verificar os itens capturados
     console.log("Itens capturados: ", itens);
 
+    // Chama a função para gerar o PDF
     gerarNotaFiscalPDF(cliente, arquiteto, itens, totalReais, totalMoedas, observacoes);
 });
 
+// Chamada para restaurar os dados ao carregar a página
 restaurarTotais();
 
-// Função para gerar a garantia ao clicar no botão "Gerar garantia do cliente"
+
+// --- Função para gerar a garantia ao clicar no botão "Gerar garantia do cliente" ---
 async function gerarGarantiaPDF(cliente, projeto, arquiteto) {
     try {
+        // Carregar o PDF de termos de garantia
         const existingPdfBytes = await fetch('/pdf/Termos de garantia - protótipo.pdf').then(res => res.arrayBuffer());
+
+        // Carregar o PDF existente
         const pdfDoc = await PDFDocument.load(existingPdfBytes);
+
+        // Obter o formulário do PDF
         const form = pdfDoc.getForm();
 
+        // Obter os campos de texto do formulário
         const nomeClienteField = form.getTextField('nomeCliente');
         const projetoField = form.getTextField('projeto');
         const arquitetoField = form.getTextField('arquiteto');
         const dataField = form.getTextField('data');
         const horaField = form.getTextField('hora');
 
+        // Preencher os campos com os valores fornecidos
         nomeClienteField.setText(cliente);
         projetoField.setText(projeto);
         arquitetoField.setText(arquiteto);
 
+        // Preencher data e hora
         const dataAtual = new Date().toLocaleDateString();
         const horaAtual = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
         dataField.setText(dataAtual);
         horaField.setText(horaAtual);
 
+        // Tornar os campos read-only (apenas leitura) usando setReadOnly()
         nomeClienteField.enableReadOnly();
         projetoField.enableReadOnly();
         arquitetoField.enableReadOnly();
         dataField.enableReadOnly();
         horaField.enableReadOnly();
 
+        // Salvar o PDF preenchido
         const pdfBytes = await pdfDoc.save();
         const blob = new Blob([pdfBytes], { type: 'application/pdf' });
         const url = URL.createObjectURL(blob);
 
+        // Baixar o PDF preenchido
         const link = document.createElement('a');
         link.href = url;
         link.download = `Garantia_${cliente}.pdf`;
@@ -356,6 +387,7 @@ async function gerarGarantiaPDF(cliente, projeto, arquiteto) {
     }
 }
 
+// Capturar o evento de clique no botão "Gerar Garantia"
 document.querySelector('.warranty-btn').addEventListener('click', () => {
     const cliente = document.getElementById('client-name').value;
     const arquiteto = document.getElementById('architect-name').value;
@@ -368,11 +400,13 @@ document.querySelector('.warranty-btn').addEventListener('click', () => {
     }
 });
 
+
+// Toggle night mode
 document.getElementById('toggle-theme-btn').addEventListener('click', function() {
     document.body.classList.toggle('dark-mode');
     if (document.body.classList.contains('dark-mode')) {
-        this.textContent = '☀️';
+        this.textContent = '☀️'; // Muda o ícone para o sol
     } else {
-        this.textContent = '🌙';
+        this.textContent = '🌙'; // Muda o ícone para a lua
     }
 });
