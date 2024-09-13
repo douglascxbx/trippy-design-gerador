@@ -331,6 +331,11 @@ body.night-mode h2, body.night-mode h3, body.night-mode label {
     color: #ffffff;
 }
 
+/* Texto dos itens da lista de nota fiscal */
+body.night-mode .item-name {
+    color: #e0e0e0;
+}
+
 /* Ajuste do ícone de alternância */
 .toggle-nightmode {
     background-color: #121212;
