@@ -46,7 +46,7 @@ h2 {
     vertical-align: middle;
     margin-left: 8px;
     position: relative;
-    top: -3px; /* Eleva o PRO ligeiramente para cima */
+    top: -3px;
 }
 
 /* Centralizar o título dos itens */
@@ -239,7 +239,11 @@ textarea::placeholder {
     color: #007bff;
 }
 
-/* Botão para alternar tema */
+/* Transição suave ao alternar entre modos */
+body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
 .theme-toggle {
     position: fixed;
     top: 20px;
@@ -260,44 +264,12 @@ textarea::placeholder {
     background-color: #e0e0e0;
 }
 
-/* Transição suave ao alternar entre modos */
-body {
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.dark-mode {
-    background-color: #121212;
-    color: #ffffff;
-}
-
-.dark-mode input,
-.dark-mode textarea {
-    background-color: #333333;
-    color: #ffffff;
-    border: 1px solid #ffffff;
-}
-
-.dark-mode button {
-    background-color: #555555;
-    color: #ffffff;
-}
-
-.dark-mode #toggle-theme-btn {
-    background-color: #333333;
-    color: #ffffff;
-}
-
-.dark-mode #toggle-theme-btn:hover {
-    background-color: #444444;
-}
-
 /* Estilos do modo noturno */
 body.night-mode {
     background-color: #121212;
     color: #e0e0e0;
 }
 
-/* Ajustar campos de entrada */
 body.night-mode input,
 body.night-mode select,
 body.night-mode textarea {
@@ -306,64 +278,49 @@ body.night-mode textarea {
     border: 1px solid #444;
 }
 
-/* Ajustar botões */
 body.night-mode button {
-    background-color: #007bff; /* Azul vibrante */
-    color: #ffffff;
+    background-color: #28a745;
+    color: #fff;
     border: none;
 }
 
-body.night-mode .add-item-btn {
-    background-color: #28a745; /* Verde */
-    color: white;
-}
-
-body.night-mode .finalize-btn,
+body.night-mode .finalize-btn, 
 body.night-mode .warranty-btn {
-    background-color: #007bff; /* Azul */
+    background-color: #007bff;
     color: white;
 }
 
-/* Ajuste para o rodapé */
-footer.footer {
-    color: #aaa;
+body.night-mode .add-item-btn {
+    background-color: #28a745;
+    color: white;
 }
 
-/* Ajuste do ícone de alternância */
-.toggle-nightmode {
-    background-color: #121212;
-    border-radius: 50%;
-}
-
-/* Alterar o fundo da página */
-body.night-mode {
-    background-color: #121212;
-    color: #e0e0e0;
-}
-
-/* Alterar o fundo da área central */
 body.night-mode .container, body.night-mode .card {
     background-color: #333;
     color: #e0e0e0;
-    border-radius: 10px; /* Melhorar a estética com cantos arredondados */
+    border-radius: 10px;
     padding: 20px;
 }
-/* Títulos */
+
+/* Ajustar campos de entrada */
+body.night-mode input,
+body.night-mode select,
+body.night-mode textarea {
+    background-color: #333333;
+    color: #ffffff;
+    border: 1px solid #ffffff;
+}
+
+/* Ajustar textos */
 body.night-mode h2, body.night-mode h3, body.night-mode label {
-    color: #ffffff; /* Garantir que o texto fique claro */
+    color: #ffffff;
 }
 
-/* Texto dos itens adicionados na lista */
-body.night-mode .item-name {
-    color: #e0e0e0; /* Cor clara para contraste com o fundo escuro */
-}
-
-/* Parte dos totais em R$ e Moedas */
-body.night-mode .totals {
+body.night-mode .item-name, body.night-mode .totals-container {
     color: #e0e0e0;
 }
 
-/* Parte do rodapé */
+/* Rodapé */
 body.night-mode .footer {
     color: #e0e0e0;
 }
