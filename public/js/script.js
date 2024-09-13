@@ -332,10 +332,6 @@ document.querySelector('.finalize-btn').addEventListener('click', () => {
 restaurarTotais();
 
 
-
-
-
-
 // --- Função para gerar a garantia ao clicar no botão "Gerar garantia do cliente" ---
 async function gerarGarantiaPDF(cliente, projeto, arquiteto) {
     try {
@@ -405,6 +401,7 @@ document.querySelector('.warranty-btn').addEventListener('click', () => {
 });
 
 
+// Toggle night mode
 document.getElementById('toggle-theme-btn').addEventListener('click', function() {
     document.body.classList.toggle('dark-mode');
     if (document.body.classList.contains('dark-mode')) {
@@ -413,5 +410,3 @@ document.getElementById('toggle-theme-btn').addEventListener('click', function()
         this.textContent = '🌙'; // Muda o ícone para a lua
     }
 });
-
-
