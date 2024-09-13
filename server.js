@@ -79,3 +79,9 @@ app.post('/gerar-garantia', (req, res) => {
 app.listen(port, () => {
     console.log(`Servidor rodando na porta ${port}`);
 });
+
+app.use((req, res, next) => {
+    res.set('Cache-Control', 'no-store');
+    next();
+});
+
