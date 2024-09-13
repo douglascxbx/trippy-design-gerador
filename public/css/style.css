@@ -335,3 +335,45 @@ footer.footer {
     background-color: #121212;
     border-radius: 50%;
 }
+
+/* Alterar o fundo da página */
+body.night-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+/* Alterar o fundo da área central */
+body.night-mode .container, body.night-mode .card {
+    background-color: #333;
+    color: #e0e0e0;
+    border-radius: 10px; /* Melhorar a estética com cantos arredondados */
+    padding: 20px;
+}
+/* Títulos */
+body.night-mode h2, body.night-mode h3, body.night-mode label {
+    color: #ffffff; /* Garantir que o texto fique claro */
+}
+
+/* Texto dos itens adicionados na lista */
+body.night-mode .item-name {
+    color: #e0e0e0; /* Cor clara para contraste com o fundo escuro */
+}
+
+/* Botões no modo noturno */
+body.night-mode button {
+    background-color: #28a745; /* Verde vibrante */
+    color: #ffffff;
+    border: none;
+}
+
+/* Botão de adicionar item */
+body.night-mode .add-item-btn {
+    background-color: #28a745;
+    color: white;
+}
+
+/* Botão de finalizar nota fiscal e gerar garantia */
+body.night-mode .finalize-btn, body.night-mode .warranty-btn {
+    background-color: #007bff; /* Azul para diferenciar */
+    color: white;
+}
