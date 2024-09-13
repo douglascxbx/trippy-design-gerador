@@ -100,6 +100,7 @@ input[type="text"], input[type="number"], select {
     text-align: right;
     font-size: 12px;
     margin-left: 20px;
+    color: #333; /* Cor do texto de totais */
 }
 
 .totals-container .add-item-btn {
@@ -239,11 +240,7 @@ textarea::placeholder {
     color: #007bff;
 }
 
-/* Transição suave ao alternar entre modos */
-body {
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
+/* Night mode button */
 .theme-toggle {
     position: fixed;
     top: 20px;
@@ -264,12 +261,44 @@ body {
     background-color: #e0e0e0;
 }
 
-/* Estilos do modo noturno */
+/* Transição suave ao alternar entre modos */
+body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+.dark-mode input,
+.dark-mode textarea {
+    background-color: #333333;
+    color: #ffffff;
+    border: 1px solid #ffffff;
+}
+
+.dark-mode button {
+    background-color: #555555;
+    color: #ffffff;
+}
+
+.dark-mode #toggle-theme-btn {
+    background-color: #333333;
+    color: #ffffff;
+}
+
+.dark-mode #toggle-theme-btn:hover {
+    background-color: #444444;
+}
+
+/* Modo noturno */
 body.night-mode {
     background-color: #121212;
     color: #e0e0e0;
 }
 
+/* Ajustar campos de entrada */
 body.night-mode input,
 body.night-mode select,
 body.night-mode textarea {
@@ -278,49 +307,45 @@ body.night-mode textarea {
     border: 1px solid #444;
 }
 
+/* Ajustar botões */
 body.night-mode button {
-    background-color: #28a745;
+    background-color: #555;
     color: #fff;
     border: none;
 }
 
-body.night-mode .finalize-btn, 
-body.night-mode .warranty-btn {
-    background-color: #007bff;
-    color: white;
-}
-
+/* Ajustar o botão de adicionar item */
 body.night-mode .add-item-btn {
     background-color: #28a745;
     color: white;
 }
 
-body.night-mode .container, body.night-mode .card {
-    background-color: #333;
-    color: #e0e0e0;
-    border-radius: 10px;
-    padding: 20px;
+body.night-mode .finalize-btn,
+body.night-mode .warranty-btn {
+    background-color: #007bff;
+    color: white;
 }
 
-/* Ajustar campos de entrada */
-body.night-mode input,
-body.night-mode select,
-body.night-mode textarea {
-    background-color: #333333;
-    color: #ffffff;
-    border: 1px solid #ffffff;
-}
-
-/* Ajustar textos */
+/* Títulos */
 body.night-mode h2, body.night-mode h3, body.night-mode label {
     color: #ffffff;
 }
 
-body.night-mode .item-name, body.night-mode .totals-container {
+/* Ajuste do ícone de alternância */
+.toggle-nightmode {
+    background-color: #121212;
+    border-radius: 50%;
+}
+
+/* Ajustar totais (R$ e Moedas) */
+body.night-mode .totals-container .totals {
     color: #e0e0e0;
 }
 
-/* Rodapé */
-body.night-mode .footer {
+body.night-mode .container, 
+body.night-mode .card {
+    background-color: #333;
     color: #e0e0e0;
+    border-radius: 10px;
+    padding: 20px;
 }
