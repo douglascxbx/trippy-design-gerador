@@ -290,3 +290,48 @@ body {
 .dark-mode #toggle-theme-btn:hover {
     background-color: #444444;
 }
+
+/* Estilos do modo noturno */
+body.night-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+/* Ajustar campos de entrada */
+body.night-mode input,
+body.night-mode select,
+body.night-mode textarea {
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #444;
+}
+
+/* Ajustar botões */
+body.night-mode button {
+    background-color: #555;
+    color: #fff;
+    border: none;
+}
+
+/* Ajustar o botão de adicionar item */
+body.night-mode .add-item-btn {
+    background-color: #28a745; /* verde mais suave */
+    color: white;
+}
+
+body.night-mode .finalize-btn,
+body.night-mode .warranty-btn {
+    background-color: #555;
+    color: white;
+}
+
+/* Ajuste para o rodapé */
+footer.footer {
+    color: #aaa;
+}
+
+/* Ajuste do ícone de alternância */
+.toggle-nightmode {
+    background-color: #121212;
+    border-radius: 50%;
+}
