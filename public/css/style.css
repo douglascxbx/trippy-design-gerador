@@ -239,7 +239,7 @@ textarea::placeholder {
     color: #007bff;
 }
 
-
+/* Botão para alternar tema */
 .theme-toggle {
     position: fixed;
     top: 20px;
@@ -308,20 +308,19 @@ body.night-mode textarea {
 
 /* Ajustar botões */
 body.night-mode button {
-    background-color: #555;
-    color: #fff;
+    background-color: #007bff; /* Azul vibrante */
+    color: #ffffff;
     border: none;
 }
 
-/* Ajustar o botão de adicionar item */
 body.night-mode .add-item-btn {
-    background-color: #28a745; /* verde mais suave */
+    background-color: #28a745; /* Verde */
     color: white;
 }
 
 body.night-mode .finalize-btn,
 body.night-mode .warranty-btn {
-    background-color: #555;
+    background-color: #007bff; /* Azul */
     color: white;
 }
 
@@ -359,21 +358,12 @@ body.night-mode .item-name {
     color: #e0e0e0; /* Cor clara para contraste com o fundo escuro */
 }
 
-/* Botões no modo noturno */
-body.night-mode button {
-    background-color: #28a745; /* Verde vibrante */
-    color: #ffffff;
-    border: none;
+/* Parte dos totais em R$ e Moedas */
+body.night-mode .totals {
+    color: #e0e0e0;
 }
 
-/* Botão de adicionar item */
-body.night-mode .add-item-btn {
-    background-color: #28a745;
-    color: white;
-}
-
-/* Botão de finalizar nota fiscal e gerar garantia */
-body.night-mode .finalize-btn, body.night-mode .warranty-btn {
-    background-color: #007bff; /* Azul para diferenciar */
-    color: white;
+/* Parte do rodapé */
+body.night-mode .footer {
+    color: #e0e0e0;
 }
