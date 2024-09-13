@@ -1,0 +1,276 @@
+/* Estilos globais */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f8fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 800px;
+    width: 100%;
+    text-align: center;
+}
+
+/* Ajuste para o título e o PRO */
+h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.pro {
+    background-color: #007bff;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 5px;
+    font-size: 0.8em;
+    font-weight: bold;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 8px;
+    position: relative;
+    top: -3px; /* Eleva o PRO ligeiramente para cima */
+}
+
+/* Centralizar o título dos itens */
+h3 {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 300;
+    font-size: 1.2em;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+label {
+    display: block;
+    text-align: left;
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+input[type="text"], input[type="number"], select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+/* Organização dos campos em linha */
+.item-input-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.item-input-group {
+    flex: 1;
+}
+
+/* Botão Adicionar Item */
+.totals-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.totals-container .totals {
+    text-align: right;
+    font-size: 12px;
+    margin-left: 20px;
+}
+
+.totals-container .add-item-btn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* Lista de itens ajustada */
+#items-list-container {
+    max-height: 150px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    margin-bottom: 15px;
+}
+
+#lista-itens {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+#lista-itens li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.item-info {
+    flex-grow: 1;
+    text-align: left;
+}
+
+.item-info strong {
+    margin-right: 5px;
+}
+
+.item-info span {
+    margin-left: 5px;
+}
+
+/* Botões de editar/remover alinhados à direita */
+.action-buttons-list {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+#lista-itens li button {
+    padding: 5px 10px;
+}
+
+/* Estilos dos botões de editar e remover */
+.btn-edit {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.btn-remove {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* Placeholder atualizado das observações */
+textarea {
+    width: 100%;
+    height: 60px;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+textarea::placeholder {
+    color: #888;
+    font-size: 12px;
+    font-family: Arial, sans-serif;
+    text-align: left;
+}
+
+/* Organização dos botões de ações */
+.action-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.finalize-btn, .warranty-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    flex: 1;
+    margin: 0 5px;
+}
+
+.finalize-btn:hover, .warranty-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Estilos para o rodapé com o texto de crédito */
+.footer {
+    margin-top: 20px;
+    font-size: 17px;
+    color: #888;
+    text-align: center;
+}
+
+.footer p {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 300;
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: #888;
+    margin: 0;
+    text-align: center;
+}
+
+.footer a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+
+/* Modo claro - padrão */
+body {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+/* Botão de alternância para o modo noturno */
+.night-mode-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 10px 15px;
+    cursor: pointer;
+    background-color: #444;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+/* Modo noturno */
+body.night-mode {
+    background-color: #1c1c1c;
+    color: #e0e0e0;
+}
+
+.night-mode .night-mode-toggle {
+    background-color: #fff;
+    color: #000;
+}
+
+/* Transição suave ao alternar entre modos */
+body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}

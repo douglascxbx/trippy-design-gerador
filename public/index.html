@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Nota Fiscal - Trippy Design</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h2>Gerador Nota Fiscal & Garantia <span class="pro">PRO</span></h2>
+
+            <!-- Campo Nome do Cliente -->
+            <label for="client-name">Nome do Cliente:</label>
+            <input type="text" id="client-name" placeholder="Digite o nome do cliente">
+
+            <!-- Campo Arquiteto(a) -->
+            <label for="architect-name">Arquiteto(a):</label>
+            <input type="text" id="architect-name" placeholder="Digite o nome do arquiteto(a)">
+
+            <!-- Seção de inserção de itens da nota fiscal -->
+            <div id="invoice-section">
+                <h3>Itens da Nota Fiscal:</h3>
+
+                <!-- Inputs horizontais para a nota fiscal -->
+                <div class="item-input-row">
+                    <div class="item-input-group">
+                        <label for="item-quantity">Quantidade</label>
+                        <input type="number" id="item-quantity" placeholder="0">
+                    </div>
+
+                    <div class="item-input-group">
+                        <label for="item-name">Item</label>
+                        <input type="text" id="item-name" placeholder="Nome do item">
+                    </div>
+
+                    <div class="item-input-group">
+                        <label for="item-type">Tipo</label>
+                        <select id="item-type">
+                            <option value="moeda" selected>Moedas</option>
+                            <option value="dinheiro">Dinheiro</option>
+                        </select>
+                    </div>
+
+                    <div class="item-input-group">
+                        <label for="item-value">Valor</label>
+                        <input type="number" id="item-value" placeholder="0.00" step="0.01">
+                    </div>
+                </div>
+
+                <!-- Exibição dos itens adicionados com scroll -->
+                <div id="items-list-container">
+                    <ul id="lista-itens"></ul>
+                </div>
+
+                <!-- Botão de adicionar mais itens e os totais em uma linha -->
+                <div class="totals-container">
+                    <button class="add-item-btn" onclick="adicionarItem()">Adicionar Item</button>
+                    <div class="totals">
+                        <p>Total em R$: <span id="total-reais">0.00</span></p>
+                        <p>Total em Moedas: <span id="total-cambios">0.00</span></p>
+                    </div>
+                </div>
+
+                <!-- Observações -->
+                <label for="observations">Observações:</label>
+                <textarea id="observations" placeholder="Digite aqui observações caso necessário"></textarea>
+
+                <!-- Botão para finalizar e gerar garantia -->
+            <div class="action-buttons">
+            <button class="finalize-btn">Finalizar Nota Fiscal</button> <!-- Sem chamar a função diretamente -->
+            <button class="warranty-btn" onclick="gerarGarantia()">Gerar garantia do cliente</button>
+            </div>
+
+            </div>
+        </div>
+
+        <!-- Texto de crédito -->
+        <footer class="footer">
+            <p>&lt; Developed by <a href="https://github.com/douglascxbx" target="_blank">@dougz</a> for <a href="https://discord.gg/rGfwyjcYn9" target="_blank">Trippy Design &reg;</a> &gt;</p>
+        </footer>
+    </div>
+
+    <script src="/js/script.js"></script>
+</body>
+</html>
