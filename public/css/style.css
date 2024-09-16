@@ -290,6 +290,7 @@ body {
 
 .dark-mode #toggle-theme-btn:hover {
     background-color: #444444;
+    color: #ffffff;
 }
 
 /* Modo noturno */
@@ -333,6 +334,7 @@ body.night-mode h2, body.night-mode h3, body.night-mode label {
 
 /* Texto dos itens da lista de nota fiscal */
 body.night-mode .item-name {
+    background-color: #333;
     color: #e0e0e0;
 }
 
@@ -344,6 +346,7 @@ body.night-mode .item-name {
 
 /* Ajustar totais (R$ e Moedas) */
 body.night-mode .totals-container .totals {
+    background-color: #333;
     color: #e0e0e0;
 }
 
